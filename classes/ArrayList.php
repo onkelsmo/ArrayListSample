@@ -49,6 +49,19 @@ class ArrayList implements \Iterator {
 	public function valid() {
 		
 	}
+	
+	public function sort() {
+		if (is_null($this->compareFunc)) {
+			$this->compareFunc = function($a, $b) {
+				if ($a == $b) {
+					return 0;
+				}
+				return ($a < $b) ? -1 : 1;
+			};
+		}
+		uasort($this->list, $this->compareFunc);
+	}
+	
 
 }
 
